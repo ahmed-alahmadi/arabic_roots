@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      # Persistent volume for data
+      - km-data:/app/server/data
+    restart: unless-stopped
+
+volumes:
+  km-data:
+    # Creates a named volume for persisting data between container restarts 
