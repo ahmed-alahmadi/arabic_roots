@@ -21,13 +21,14 @@ ENV REACT_APP_ASSETS_URL=
 RUN npm run build
 
 # Set server port
-ENV PORT=3001
+ENV PORT=3000
 
-# Ensure server data directory exists
-# RUN mkdir -p server/data
+# Create start script to ensure data directory exists
+# RUN echo '#!/bin/sh\nmkdir -p /app/server/data\necho "Data directory created/verified"\nexec npm run server' > /app/docker-start.sh \
+#   && chmod +x /app/docker-start.sh
 
 # Expose port for the server
 EXPOSE 3001
 
 # Start the server (which will serve the React build)
-CMD ["npm", "run", "server"] 
+CMD ["/app/docker-start.sh"] 
