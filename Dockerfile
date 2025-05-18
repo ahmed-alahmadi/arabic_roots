@@ -11,16 +11,19 @@ RUN npm install
 # Copy project files
 COPY . .
 
-# Build the React app with production settings
+# Set environment variables for React build
 ENV NODE_ENV=production
+ENV REACT_APP_ENV=production
+ENV REACT_APP_API_URL=/api
+ENV REACT_APP_ASSETS_URL=
 
 # Build the React app
 RUN npm run build
 
-# Set server port (matching the port in server.js)
+# Set server port
 ENV PORT=3001
 
-# Create data directory
+# Ensure server data directory exists
 # RUN mkdir -p server/data
 
 # Expose port for the server
