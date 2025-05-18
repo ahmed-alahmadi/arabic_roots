@@ -5,7 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Define the single source of truth for data files
 const DATA_DIR = path.join(__dirname, 'data');
@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '200mb' }));
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve static files from build directory (for production)
+app.use(express.static(path.join(__dirname, '../build')));
 
 // Make sure server data directory exists
 if (!fs.existsSync(DATA_DIR)) {
