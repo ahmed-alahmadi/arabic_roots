@@ -1,0 +1,12 @@
+{
+  "name": "pwa-assets-generator",
+  "version": "1.0.0",
+  "description": "Random PWA assets generator for icons and splash screens",
+  "private": true,
+  "dependencies": {
+    "canvas": "^2.11.0"
+  },
+  "scripts": {
+    "generate": "node generate-pwa-assets.js"
+  }
+} 
