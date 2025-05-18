@@ -23,12 +23,7 @@ RUN npm run build
 # Set server port
 ENV PORT=3000
 
-# Create start script to ensure data directory exists
-# RUN echo '#!/bin/sh\nmkdir -p /app/server/data\necho "Data directory created/verified"\nexec npm run server' > /app/docker-start.sh \
-#   && chmod +x /app/docker-start.sh
 
-# Expose port for the server
-EXPOSE 3001
+EXPOSE 3000
 
-# Start the server (which will serve the React build)
-CMD ["/app/docker-start.sh"] 
+CMD ["npm", "run", "server"] 
